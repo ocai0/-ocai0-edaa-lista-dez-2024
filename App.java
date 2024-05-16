@@ -20,12 +20,13 @@ public class App {
             LocalTime endTime = App.getEndTime(client.getTime());
             LocalTime timeSpent = endTime.minusHours(client.getTime().getHour())
                     .minusMinutes(client.getTime().getMinute());
-            System.out.println(client.getName() + " atendido pelo " + collaboratorManager.attend().getName()
-                    + ", com o tempo de " + timeSpent.getMinute() + " minutos de espera\n");
+            System.out.println(client.getName() + " atendido por " + collaboratorManager.attend().getName()
+                    + ", com o tempo de " + timeSpent.getMinute() + " minutos.\n");
             if (App.rand.nextInt(1) == 1)
                 collaboratorManager.releaseCollaborator();
 
         } while ((client = filaEspera.poll()) != null);
+        System.out.println("Não há mais pessoas na fila");
     }
 
     public static LocalTime getEndTime(LocalTime t) {
